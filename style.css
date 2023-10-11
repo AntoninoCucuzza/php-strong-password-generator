@@ -1,0 +1,21 @@
+body {
+    min-height: 100vh;
+    color: white;
+    background-color: black;
+}
+
+.banner {
+    background-color: rgb(138, 216, 216);
+}
+
+.content {
+    background-color: white;
+}
+
+.left {
+    color: black;
+}
+
+.right {
+    color: black;
+}
