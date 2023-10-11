@@ -1,21 +1,21 @@
-body {
-    min-height: 100vh;
-    color: white;
-    background-color: black;
-}
+    body {
+        min-height: 100vh;
+        color: white;
+        background-color: black;
+    }
 
-.banner {
-    background-color: rgb(138, 216, 216);
-}
+    .banner {
+        background-color: rgb(98, 156, 156);
+    }
 
-.content {
-    background-color: white;
-}
+    .content {
+        background-color: gray;
+    }
 
-.left {
-    color: black;
-}
+    .left {
+        color: black;
+    }
 
-.right {
-    color: black;
-}
+    .right {
+        color: black;
+    }

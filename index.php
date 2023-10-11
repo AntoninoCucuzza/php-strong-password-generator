@@ -1,13 +1,48 @@
 <?php
+
+$length = $_GET["length"];
+
 $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 $numbers = '0123456789';
 
-$symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+$symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?`~';
 
 $password = '';
 
-var_dump($_GET)
+/* ####### */
+$allowed_char = '';
+
+if (isset($_GET["lettere"])) {
+    $allowed_char .= $characters;
+}
+
+if (isset($_GET["numeri"])) {
+    $allowed_char .= $numbers;
+}
+
+if (isset($_GET["simboli"])) {
+    $allowed_char .= $symbols;
+}
+
+var_dump($allowed_char);
+
+
+/* function rngPassword($length)
+{
+
+
+    while (strlen($password) < $length) {
+    }
+} 
+*/
+
+//var_dump($_GET);
+
+$random_char = $characters[rand(0, strlen($characters))];
+
+var_dump($random_char);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +61,14 @@ var_dump($_GET)
         <h1 class="text-center text-secondary">Strong Password Generator</h1>
         <h2 class="text-center">genera un password sicura</h2>
 
-        <div class="banner my-3">
-            banner
+        <div class="banner p-3 my-3">
+            la tua password e: <?= $password ?>
         </div>
 
         <div class="content ">
+
             <form action="" class="row p-3" method="GET">
+
                 <div class="left col-6 d-flex flex-column">
                     <h4 class="mb-3">Lunghezza password:</h4>
                     <h4>Consenti ripetizioni di uno o piu caratteri:</h4>
@@ -43,7 +80,7 @@ var_dump($_GET)
                 </div>
 
                 <div class="right col-6">
-                    <input type="number" required>
+                    <input type="number" name="length" class="form-control w-50" id="length" required> <!-- min="8" max="64"  -->
 
                     <div class="wrapper_radio d-flex flex-column my-3">
                         <div class=" form-check">
