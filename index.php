@@ -1,41 +1,10 @@
 <?php
 $length = $_GET["length"];
 
-function rngPassword($length)
-{
-
-    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    $numbers = '0123456789';
-
-    $symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?`~';
-
-    $allowed_char = '';
-
-    if (isset($_GET["lettere"])) {
-        $allowed_char .= $characters;
-    }
-
-    if (isset($_GET["numeri"])) {
-        $allowed_char .= $numbers;
-    }
-
-    if (isset($_GET["simboli"])) {
-        $allowed_char .= $symbols;
-    }
-
-    $password = '';
-
-    while (strlen($password) < $length) {
-        $random_char = $allowed_char[rand(0, strlen($allowed_char))];
-        $password .= $random_char;
-    }
-    return $password;
-}
+include './functions.php';
 
 $password = rngPassword($length);
-var_dump($password);
-
+var_dump($password)
 
 ?>
 
@@ -74,7 +43,8 @@ var_dump($password);
                 </div>
 
                 <div class="right col-6">
-                    <input type="number" name="length" class="form-control w-50" id="length" required> <!-- min="8" max="64"  -->
+
+                    <input type="number" name="length" class="form-control w-50" id="length" min="8" max="64" value="<?= $length ?>">
 
                     <div class="wrapper_radio d-flex flex-column my-3">
                         <div class=" form-check">
@@ -91,17 +61,17 @@ var_dump($password);
 
                     <div class=" wrapper_box d-flex flex-column ">
                         <div class="form-check">
-                            <input checked class="form-check-input" type="checkbox" id="lettere" name="lettere" value="characters">
+                            <input class="form-check-input" type="checkbox" id="lettere" name="lettere" value="characters" <?= isset($_GET["lettere"]) ? 'checked' : '';  ?>>
                             <label for="lettere">Lettere</label>
                         </div>
 
                         <div class="form-check">
-                            <input checked class="form-check-input" type="checkbox" id="numeri" name="numeri" value="numbers">
+                            <input class="form-check-input" type="checkbox" id="numeri" name="numeri" value="numbers" <?= isset($_GET["numeri"]) ? 'checked' : '';  ?>>
                             <label for="numeri">Numeri</label>
                         </div>
 
                         <div class="form-check">
-                            <input checked class="form-check-input" type="checkbox" id="simboli" name="simboli" value="symbols">
+                            <input class="form-check-input" type="checkbox" id="simboli" name="simboli" value="symbols" <?= isset($_GET["simboli"]) ? 'checked' : '';  ?>>
                             <label for="simboli">Simboli</label>
                         </div>
 
