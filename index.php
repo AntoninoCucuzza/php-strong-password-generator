@@ -1,47 +1,41 @@
 <?php
-
 $length = $_GET["length"];
 
-$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-$numbers = '0123456789';
-
-$symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?`~';
-
-$password = '';
-
-/* ####### */
-$allowed_char = '';
-
-if (isset($_GET["lettere"])) {
-    $allowed_char .= $characters;
-}
-
-if (isset($_GET["numeri"])) {
-    $allowed_char .= $numbers;
-}
-
-if (isset($_GET["simboli"])) {
-    $allowed_char .= $symbols;
-}
-
-var_dump($allowed_char);
-
-
-/* function rngPassword($length)
+function rngPassword($length)
 {
 
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    $numbers = '0123456789';
+
+    $symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?`~';
+
+    $allowed_char = '';
+
+    if (isset($_GET["lettere"])) {
+        $allowed_char .= $characters;
+    }
+
+    if (isset($_GET["numeri"])) {
+        $allowed_char .= $numbers;
+    }
+
+    if (isset($_GET["simboli"])) {
+        $allowed_char .= $symbols;
+    }
+
+    $password = '';
 
     while (strlen($password) < $length) {
+        $random_char = $allowed_char[rand(0, strlen($allowed_char))];
+        $password .= $random_char;
     }
-} 
-*/
+    return $password;
+}
 
-//var_dump($_GET);
+$password = rngPassword($length);
+var_dump($password);
 
-$random_char = $characters[rand(0, strlen($characters))];
-
-var_dump($random_char);
 
 ?>
 
@@ -102,12 +96,12 @@ var_dump($random_char);
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="numeri" name="numeri" value="numbers">
+                            <input checked class="form-check-input" type="checkbox" id="numeri" name="numeri" value="numbers">
                             <label for="numeri">Numeri</label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="simboli" name="simboli" value="symbols">
+                            <input checked class="form-check-input" type="checkbox" id="simboli" name="simboli" value="symbols">
                             <label for="simboli">Simboli</label>
                         </div>
 
