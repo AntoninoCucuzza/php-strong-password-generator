@@ -1,10 +1,14 @@
 <?php
+session_start();
+
 $length = $_GET["length"];
 
 include './functions.php';
 
-$password = rngPassword($length);
-var_dump($password)
+if (isset($length)) {
+    $password = rngPassword($length);
+    var_dump($password);
+}
 
 ?>
 
@@ -44,7 +48,7 @@ var_dump($password)
 
                 <div class="right col-6">
 
-                    <input type="number" name="length" class="form-control w-50" id="length" min="8" max="64" value="<?= $length ?>">
+                    <input type="number" name="length" class="form-control w-50" id="length" min="8" max="64" value="<?= $length ?>" required>
 
                     <div class="wrapper_radio d-flex flex-column my-3">
                         <div class=" form-check">

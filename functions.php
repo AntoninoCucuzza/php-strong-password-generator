@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function rngPassword($length)
 {
@@ -29,5 +30,9 @@ function rngPassword($length)
         $random_char = $allowed_char[rand(0, strlen($allowed_char))];
         $password .= $random_char;
     }
-    return $password;
+
+
+    header('Location: ./redirect.php');
+
+    return $_SESSION['password'] = $password;
 }
